@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <string>
 #include <fstream>
-#include <limits> // Added for input validation limits
+#include <limits>
 using namespace std;
 
 // Constant
@@ -264,22 +264,21 @@ void input_symbol(int size){
     cin >> symbol;
     switch (symbol) {
     case 'r':
-    case 'R': // Added uppercase support
+    case 'R': 
         opencell(size);
         break;
     case 'f':
-    case 'F': // Added uppercase support
+    case 'F':
         placeflag(size);
         break;
     case 'u':
-    case 'U': // Added uppercase support
+    case 'U':
         removeflag(size);
         break;
     default:
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "Invalid command. Use 'r' (Reveal), 'f' (Flag), or 'u' (Unflag)." << endl;
-        // Prompt again if they messed up the letter
         cout << "Enter action and coordinates: "; 
         input_symbol(size);
     }
@@ -346,7 +345,6 @@ void difficulty() {
         }
         if (size > 38) {
             cout << "(Invalid input) Please enter value up to 38." << endl;
-            // Defaulting if they mess up custom bounds
             size = 7;
             n = 10;
             break;
@@ -388,7 +386,6 @@ void game(int size, int n) {
         printtable(table, size);
         cout << "\nFlags Placed: " << flag_counter << " | Time: " << game_time << " seconds" << endl;
         
-        // Added clear prompt here
         cout << "Enter action (r=Reveal, f=Flag, u=Unflag) and coordinates (row col): "; 
         input_symbol(size);
     }
